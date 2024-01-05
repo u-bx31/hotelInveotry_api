@@ -14,12 +14,14 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('room_types_id')->constrained();
+            $table->uuid('room_types_id');
             $table->string('image');
             $table->integer('price');
             $table->float('rating');
             $table->boolean('availability');
             $table->timestamps();
+
+            $table->foreign('room_types_id')->references('id')->on('room_types');
         });
 
     }

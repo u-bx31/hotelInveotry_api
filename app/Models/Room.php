@@ -10,6 +10,9 @@ class Room extends Model
 {
     use HasUuids,HasFactory;
 
+    protected $primaryKey = 'id';
+    public $incrementing = false;
+    protected $keyType = 'string';
     protected $fillable = [
         'image',
         'price',
@@ -19,6 +22,6 @@ class Room extends Model
 
     public function roomType()
     {
-        return $this->belongsTo(RoomType::class);
+        return $this->belongsTo(RoomType::class,'room_types_id');
     }
 }

@@ -34,8 +34,6 @@ class UsersController extends Controller
     public function store(UserRequest $request)
     {
         $user = new User($request->only(['first_name', 'last_name', 'email', 'phone_number', 'role']));
-        $user->created_by = $user->id;
-        $user->pinned = false;
         $user->save();
         return $this->successResponse(['user' => $user]);
     }

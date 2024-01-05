@@ -10,12 +10,15 @@ class RoomType extends Model
 {
     use HasUuids,HasFactory;
 
+    protected $primaryKey = 'id';
+    public $incrementing = false;
+    protected $keyType = 'string';
     protected $fillable = [
         'type',
     ];
 
     public function rooms()
     {
-        return $this->hasMany(Room::class);
+        return $this->hasMany(Room::class,'room_types_id');
     }
 }
